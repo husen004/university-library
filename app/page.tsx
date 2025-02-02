@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 
-const page = () => {
+const Home = () => {
   return (
     <>
       <Button>Click Me</Button>
@@ -8,4 +8,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Home
