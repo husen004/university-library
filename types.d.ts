@@ -12,5 +12,5 @@ interface Book {
     cover: string;
     video: string;
     summary: string;
-    isLoanedBook: string;
+    isLoanedBook: boolean;
 }
