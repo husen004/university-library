@@ -1,12 +1,12 @@
 import BookList from '@/components/BookList'
 import BookOverview from '@/components/BookOverview'
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { sampleBooks } from '@/constants'
 
 const Home = () => (
   <>
-    <BookOverview />
-    <BookList />
+    <BookOverview { ...sampleBooks[0] } />
+
+    <BookList title="Latest" books={sampleBooks} containerClassName="mt-28" />
   </>
 )
 
