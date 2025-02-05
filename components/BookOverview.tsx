@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { Button } from './ui/button'
+import BookCover from './BookCover'
 
 const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopies, description, color, cover }: Book) => {
   return (
@@ -37,6 +38,14 @@ const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopi
             <p className='font-bebas-neue text-xl text-dark-100'>Borrow</p>
           </Button>
 
+        </div>
+        
+        <div className='relative flex flex-1 justify-center'>
+          <div className='relative'>
+            <BookCover 
+            
+            />
+          </div>
         </div>
     </section>
   )
