@@ -5,6 +5,13 @@ const BookOverview = ({ title, author, genre, rating, total, total_copies, avail
     <section className='book-overview'>
         <div className='flex flex-1 flex-col gap-5'>
             <h1 className=''>{title}</h1>
+
+          <div className='book-info'>
+            <p>
+              <span className='font-semibold text-light-200'>{author}</span>
+            </p>
+          </div>
+
         </div>
     </section>
   )
