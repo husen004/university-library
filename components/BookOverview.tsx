@@ -43,8 +43,19 @@ const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopi
         <div className='relative flex flex-1 justify-center'>
           <div className='relative'>
             <BookCover 
-            
+              variant='wide'
+              className="z-10"
+              coverColor={color}
+              coverImage={cover}
             />
+            <div className='abslute left-16 top-10 rotate-12 opacity-40'>
+            <BookCover 
+              variant='wide'
+              className="z-10"
+              coverColor={color}
+              coverImage={cover}
+            />
+            </div>
           </div>
         </div>
     </section>
