@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const BookOverview = ({ title, author, genre, rating, total, total_copies, available_copies, description, color, cover }: Book) => {
+const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopies, description, color, cover }: Book) => {
   return (
     <section className='book-overview'>
         <div className='flex flex-1 flex-col gap-5'>
@@ -23,8 +23,11 @@ const BookOverview = ({ title, author, genre, rating, total, total_copies, avail
               <p className=''>{rating}</p>
             </div>
 
+            <div className='book-copies'>
+              <p>Total Books: <span>{totalCopies}</span></p>
+              <p>Available Books: <span>{availableCopies}</span></p>
+            </div>
           </div>
-
         </div>
     </section>
   )
