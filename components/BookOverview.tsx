@@ -10,6 +10,11 @@ const BookOverview = ({ title, author, genre, rating, total, total_copies, avail
             <p>
               <span className='font-semibold text-light-200'>{author}</span>
             </p>
+
+            <p>
+              Category{" "}
+              <span className='font-semibold text-light-200'>{genre}</span>
+            </p>
           </div>
 
         </div>
