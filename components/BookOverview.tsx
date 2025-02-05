@@ -20,7 +20,7 @@ const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopi
 
             <div className='flex flex-row gap-1'>
               <Image src="/icons/star.svg" alt="start" width={22} height={22} />
-              <p className=''>{rating}</p>
+              <p>{rating}</p>
             </div>
 
             <div className='book-copies'>
@@ -28,6 +28,9 @@ const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopi
               <p>Available Books: <span>{availableCopies}</span></p>
             </div>
           </div>
+
+          <p className='book-description'>{description}</p>
+
         </div>
     </section>
   )
