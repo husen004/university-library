@@ -7,8 +7,8 @@ interface Book {
     totalCopies: number;
     availableCopies: number;
     description: string;
-    color: string;
-    cover: string;
+    coverColor: string;
+    coverImage: string;
     video: string;
     summary: string;
     isLoanedBook: boolean;
