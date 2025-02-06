@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import React from 'react'
 
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide"
@@ -17,10 +18,14 @@ interface Props {
     coverImage: string
 }
 
-const BookCover = ({ variant, className, coverColor, coverImage }: Props) => {
+const BookCover = ({ 
+  className, 
+  variant = "regular", 
+  coverColor = "#012B48", 
+  coverImage = "https://placehold.co/400x600.png" }: Props) => {
   return (
-    <div>
-
+    <div className={cn("relative transition-all duration-300", variantStyles[variant])}>
+      
     </div>
   )
 }
