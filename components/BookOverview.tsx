@@ -55,6 +55,7 @@ const BookOverview = ({ title, author, genre, rating, totalCopies, availableCopi
               coverColor={coverColor}
               coverImage={coverImage}
             />
+            
             </div>
           </div>
         </div>
