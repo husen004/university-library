@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
-import { DefaultValues, FieldValues, SubmitHandler, UseFormReturn } from 'react-hook-form'
+import { DefaultValues, FieldValues, SubmitHandler, useForm, UseFormReturn } from 'react-hook-form'
 import { ZodType } from 'zod';
 
 interface Props<T extends FieldValues> {
@@ -12,7 +12,7 @@ interface Props<T extends FieldValues> {
 
 }
 
-const AuthForm = ({ type, schema, defaultValues, onSubmit }: Props) => {
+const AuthForm = <T extends FieldValues> ({ type, schema, defaultValues, onSubmit }: Props<T>) => {
 
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
