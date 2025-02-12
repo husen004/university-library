@@ -22,6 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 interface Props<T extends FieldValues> {
   scheme: ZodType<T>;
@@ -75,6 +76,18 @@ const AuthForm = <T extends FieldValues>({
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+
+      <p className="text-center">
+        {isSignIn ? "" : ""}
+
+        <Link
+        href={isSignIn ? "/sign-in" : "/sign-up"}
+        className="font-bald text-primary"
+        >
+          {isSignIn ? "Create an account" : "Sign in"}
+        </Link>
+
+      </p>
     </div>
   );
 };
