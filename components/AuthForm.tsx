@@ -9,7 +9,7 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
-import { ZodType } from "zod";
+import { object, ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,7 +25,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 interface Props<T extends FieldValues> {
-  scheme: ZodType<T>;
+  schema: ZodType<T>;
   onSubmit: (data: T) => Promise<{ success: boolean; error: string }>;
   type: "SIGN_IN" | "SIGN_UP";
 }
@@ -56,8 +56,11 @@ const AuthForm = <T extends FieldValues>({
           : "Please complete all fields and upload a valid university ID to gain access to the library"}
       </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6 w-full">
+
+          {Object.keys(defaultValues).map((field) => (
           <FormField
+            key={field}
             control={form.control}
             name="username"
             render={({ field }) => (
@@ -73,15 +76,17 @@ const AuthForm = <T extends FieldValues>({
               </FormItem>
             )}
           />
+          ))}
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
 
-      <p className="text-center">
-        {isSignIn ? "" : ""}
+      <p className="text-center text-base font-medium">
+        {isSignIn ? "New to BookWise? " : "Already have an account? "}
 
         <Link
-        href={isSignIn ? "/sign-in" : "/sign-up"}
+        href={isSignIn ? "/sign-up" : "/sign-in"}
         className="font-bald text-primary"
         >
           {isSignIn ? "Create an account" : "Sign in"}
