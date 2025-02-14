@@ -5,6 +5,7 @@ import React from "react";
 import {
   DefaultValues,
   FieldValues,
+  Path,
   SubmitHandler,
   useForm,
   UseFormReturn,
@@ -28,6 +29,7 @@ import ImageUpload from "./ImageUpload";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
+  defaultValues: T;
   onSubmit: (data: T) => Promise<{ success: boolean; error: string }>;
   type: "SIGN_IN" | "SIGN_UP";
 }
@@ -95,7 +97,7 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="form-btn">{isSignIn ? "Sign in" : "Sign up"}</Button>
         </form>
       </Form>
 
