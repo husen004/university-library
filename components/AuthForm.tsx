@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { FIELD_NAMES } from "@/constants";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -43,7 +44,9 @@ const AuthForm = <T extends FieldValues>({
 
   const isSignIn = type === "SIGN_IN";
 
-  const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -62,10 +65,10 @@ const AuthForm = <T extends FieldValues>({
           <FormField
             key={field}
             control={form.control}
-            name="username"
+            name={field as Path<T>}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel className="capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                 <FormControl>
                   <Input placeholder="shadcn" {...field} />
                 </FormControl>
