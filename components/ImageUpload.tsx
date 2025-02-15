@@ -1,11 +1,13 @@
-import React from 'react'
+'use client'
 
-import { IKImage, IKVideo, ImageKitProvider, IKUpload, ImageKitContext } from "imagekitio-next";
+import {
+  IKImage,
+  ImageKitProvider,
+  IKUpload,
+} from "imagekitio-next";
 
 const ImageUpload = () => {
-  return (
-    <div>ImageUpload</div>
-  )
-}
+  return <div>ImageUpload</div>;
+};
 
-export default ImageUpload
+export default ImageUpload;
