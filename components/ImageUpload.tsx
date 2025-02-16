@@ -19,6 +19,12 @@ const authentocator = async () => {
       )
     }
 
+    const data = await response.json();
+
+    const { signature, expire, token } = data;
+
+    return { signature, expire, token };
+
   } catch (error: any) {
     throw new Error(`Authentication request failed: ${error.massage}`)
   }
