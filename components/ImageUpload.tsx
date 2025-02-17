@@ -41,8 +41,7 @@ const ImageUpload = () => {
   const onError = () => {};
   const onSuccess = () => {};
 
-  return (
-    <ImageKitProvider
+  return <ImageKitProvider
       publicKey={publicKey}
       urlEndpoint={urlEndpoint}
       authenticator={authentocator}
@@ -54,7 +53,14 @@ const ImageUpload = () => {
         onSuccess={onSuccess}
         fileName="test-upload.png"
       />
-      <button className="upload-btn">
+      <button className="upload-btn" onClick={(e) => {
+        e.preventDefault();
+
+        if(ikUploadRef.current) {
+          // @ts-ignore
+          ikUploadRef.current?.click()
+        }
+      }}>
         <Image
         src={`/icons/upload.svg`}
         alt="upload-icon"
@@ -66,6 +72,7 @@ const ImageUpload = () => {
         <p className="text-base text-light-100">Upload a File</p>
 
         {file && <p className="upload-filename">{file.filePath}</p>}
+        </button>
 
         {file && (
           <IKImage
@@ -75,9 +82,7 @@ const ImageUpload = () => {
           height={500}
           />
         )}
-      </button>
     </ImageKitProvider>
-  );
 };
 
 export default ImageUpload;
