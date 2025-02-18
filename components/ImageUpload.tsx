@@ -34,14 +34,21 @@ const authentocator = async () => {
   }
 };
 
-const ImageUpload = () => {
+const ImageUpload = ({
+  onFileChange,
+}: {
+  onFileChange: (filePath: string) => void;
+}) => {
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
   const onError = () => {};
-  const onSuccess = () => {};
+  const onSuccess = (res: any) => {
+    setFile(res);
+  };
 
-  return <ImageKitProvider
+  return (
+    <ImageKitProvider
       publicKey={publicKey}
       urlEndpoint={urlEndpoint}
       authenticator={authentocator}
@@ -53,36 +60,40 @@ const ImageUpload = () => {
         onSuccess={onSuccess}
         fileName="test-upload.png"
       />
-      <button className="upload-btn" onClick={(e) => {
-        e.preventDefault();
+      <button
+        className="upload-btn"
+        onClick={(e) => {
+          e.preventDefault();
 
-        if(ikUploadRef.current) {
-          // @ts-ignore
-          ikUploadRef.current?.click()
-        }
-      }}>
+          if (ikUploadRef.current) {
+            // @ts-ignore
+            ikUploadRef.current?.click();
+          }
+        }}
+      >
         <Image
-        src={`/icons/upload.svg`}
-        alt="upload-icon"
-        width={20}
-        height={20}
-        className="object-contain"
+          src={`/icons/upload.svg`}
+          alt="upload-icon"
+          width={20}
+          height={20}
+          className="object-contain"
         />
 
         <p className="text-base text-light-100">Upload a File</p>
 
         {file && <p className="upload-filename">{file.filePath}</p>}
-        </button>
+      </button>
 
-        {file && (
-          <IKImage
+      {file && (
+        <IKImage
           alt={file.filePath}
           path={file.filePath}
           width={500}
           height={500}
-          />
-        )}
+        />
+      )}
     </ImageKitProvider>
+  );
 };
 
 export default ImageUpload;
