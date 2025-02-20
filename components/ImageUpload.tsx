@@ -59,6 +59,7 @@ const ImageUpload = ({
     toast({
       title: "Image uploaded successfully",
       description: `${res.filePath} Uploaded successfully`,
+      variant: "default"
     });
   };
 
