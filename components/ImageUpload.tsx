@@ -31,7 +31,7 @@ const authentocator = async () => {
 
     return { signature, expire, token };
   } catch (error: any) {
-    throw new Error(`Authentication request failed: ${error.massage}`);
+    throw new Error(`Authentication request failed: ${error.message}`);
   }
 };
 
@@ -44,21 +44,22 @@ const ImageUpload = ({
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
   const onError = (error: any) => {
-    console.log(error)
+    console.log(error);
     toast({
-      title:"Image uploaded failed",
-      description:"Your image could not be uploaded. Please try again",
+      title: "Image uploaded failed",
+      description: "Your image could not be uploaded. Please try again",
       variant: "destructive",
-    })
+    });
   };
+
   const onSuccess = (res: any) => {
     setFile(res);
-    onFileChange(res.filePath)
+    onFileChange(res.filePath);
 
     toast({
-      title:"Image uploaded successfully",
-      description:`${res.filePath} Uploaded successfully`,
-    })
+      title: "Image uploaded successfully",
+      description: `${res.filePath} Uploaded successfully`,
+    });
   };
 
   return (
