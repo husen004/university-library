@@ -30,4 +30,3 @@ export const users = pgTable("users", {
   lastActivityDate: date("last_activity_day").defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
-
