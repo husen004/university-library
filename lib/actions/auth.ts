@@ -6,9 +6,10 @@ import { users } from "@/database/schema";
 import bcrypt, { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 
-export const signInWithCredentials = async (
-  params: Pick<AuthCredentials, "email" | "password">
-) => {
+export const signInWithCredentials = async (params: {
+  email: string;
+  password: string;
+}): Promise<{ success: boolean; error: string }> => {
   const { email, password } = params;
 
   try {
@@ -19,7 +20,7 @@ export const signInWithCredentials = async (
     });
 
     if (result?.error) {
-      return { success: false, massage: result.error };
+      return { success: false, error: result.error };
     }
 
     return { success: true, error: "Logged in successfully" };
@@ -29,7 +30,9 @@ export const signInWithCredentials = async (
   }
 };
 
-export const signUp = async (params: AuthCredentials) => {
+export const signUp = async (
+  params: AuthCredentials
+): Promise<{ success: boolean; error: string }> => {
   const { fullName, email, password, universityId, universityCard } = params;
 
   // checks if the user already exists
@@ -40,7 +43,7 @@ export const signUp = async (params: AuthCredentials) => {
     .limit(1);
 
   if (existingUser.length > 0) {
-    return { success: false, massage: "User already exist" };
+    return { success: false, error: "User already exist" };
   }
 
   const hashpassword = await hash(password, 10);
