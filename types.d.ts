@@ -18,6 +18,6 @@ interface AuthCredentials {
     fullName: string;
     email: string;
     password: string;
-    universityId: string;
+    universityId: number;
     universityCard: string;
 }

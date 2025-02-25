@@ -2,6 +2,7 @@
 
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
+import bcrypt, { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 
 const signUp = async (params: AuthCredentials) => {
@@ -18,5 +19,20 @@ const signUp = async (params: AuthCredentials) => {
       return { success: false, massage: "User already exist" };
     }
 
-    
+    const hashpassword = await hash(password, 10);
+
+    try{
+        await db.insert(users).values({
+            fullName,
+            email,
+            universityId,
+            password: hashpassword,
+            universityCard,
+        })
+
+        // await signInWithCredentials({ email, password });
+    } catch (error) {
+        console.log(error, "Signup error")
+        return { success: false, massage: "Signup failed" }
+    }
 };
