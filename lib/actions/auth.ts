@@ -22,10 +22,10 @@ export const signInWithCredentials = async (
       return { success: false, massage: result.error };
     }
 
-    return { success: true };
+    return { success: true, error: "Logged in successfully" };
   } catch (error) {
     console.log(error, "Signin error");
-    return { success: false, massage: "Signin failed" };
+    return { success: false, error: "Signin failed" };
   }
 };
 
@@ -56,9 +56,9 @@ export const signUp = async (params: AuthCredentials) => {
 
     // await signInWithCredentials({ email, password });
 
-    return { success: true };
+    return { success: true, error: "Signed up successfully" };
   } catch (error) {
     console.log(error, "Signup error");
-    return { success: false, massage: "Signup failed" };
+    return { success: false, error: "Signup failed" };
   }
 };
