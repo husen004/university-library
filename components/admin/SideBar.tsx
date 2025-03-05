@@ -62,8 +62,8 @@ const SideBar = ({ session }: { session: Session }) => {
         </Avatar>
 
         <div className="flex flex-col max-md:hidden">
-        <p className="font-semibold text-dark-200">{session?.user?.name}</p>
-        <p className="text-light-500 text-xs">{session?.user?.email}</p>
+            <p className="font-semibold text-dark-200">{session?.user?.name}</p>
+            <p className="text-light-500 text-xs">{session?.user?.email}</p>
         </div>
       </div>
     </div>
