@@ -48,7 +48,9 @@ const BookForm = ({
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof bookSchema>) => {}
+  const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+    
+  }
 
   return (
       <Form {...form}>
@@ -222,15 +224,63 @@ const BookForm = ({
                   </FormLabel>
                   <FormControl>
                     
-                      <Textarea>
-
-                      </Textarea>
+                      <Textarea
+                      placeholder="Book description"
+                      {...field}
+                      rows={10}
+                      className="book-form_input"
+                      />
                     
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name={"videoUrl"}
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-1">
+                  <FormLabel className="text-base text-dark-500 font-normal">
+                    Book Trailer
+                  </FormLabel>
+                  <FormControl>
+                    
+                      {/* <ImageUpload {...field} /> */}
+                    
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name={"summary"}
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-1">
+                  <FormLabel className="text-base text-dark-500 font-normal">
+                    Book Summary
+                  </FormLabel>
+                  <FormControl>
+                    
+                      <Textarea
+                        placeholder="Total summary"
+                        {...field}
+                        rows={5}
+                        className="book-form_input"
+                      />
+                    
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button type="submit" className="book-form_btn text-white">
+              Add Book to Library
+            </Button>
             
           
         </form>
