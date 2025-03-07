@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
+import FileUpload from "@/components/FileUpload";
 
 interface Props extends Partial<Book> {
   type: "create" | "update";
@@ -188,7 +189,15 @@ const BookForm = ({
                   </FormLabel>
                   <FormControl>
                     
-                      {/* <ImageUpload {...field} /> */}
+                      <FileUpload
+                        type="image"
+                        accept="image/*"
+                        placeholder="Upload Book Image"
+                        folder="books/covers"
+                        variant="dark"
+                        onFileChange={field.onChange}
+                        value={field.value}
+                        />
                     
                   </FormControl>
                   <FormMessage />
@@ -247,7 +256,15 @@ const BookForm = ({
                   </FormLabel>
                   <FormControl>
                     
-                      {/* <ImageUpload {...field} /> */}
+                      <FileUpload
+                        type="video"
+                        accept="videos/*"
+                        placeholder="Upload Book Video"
+                        folder="books/videos"
+                        variant="dark"
+                        onFileChange={field.onChange}
+                        value={field.value}
+                        />
                     
                   </FormControl>
                   <FormMessage />
