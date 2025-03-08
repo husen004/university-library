@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
 import FileUpload from "@/components/FileUpload";
-import ColorPicker from "../ColorPicker";
+import ColorPicker from "@/components/ColorPicker";
 
 interface Props extends Partial<Book> {
   type: "create" | "update";
@@ -35,8 +35,8 @@ const BookForm = ({ type, ...book }: Props) => {
       description: "",
       author: "",
       genre: "",
-      rating: 1,
-      totalCopies: 2,
+      rating: 0,
+      totalCopies: 0,
       coverUrl: "",
       coverColor: "",
       videoUrl: "",
@@ -45,8 +45,8 @@ const BookForm = ({ type, ...book }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    console.log(values);
-  };
+    
+  }
 
   return (
     <Form {...form}>
