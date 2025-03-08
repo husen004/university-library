@@ -21,6 +21,8 @@ import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
 import FileUpload from "@/components/FileUpload";
+import { createBook } from "@/lib/admin/actions/book";
+import { toast } from "@/hooks/use-toast";
 
 interface Props extends Partial<Book> {
   type: "create" | "update";
@@ -40,8 +42,8 @@ const BookForm = ({
       description: "",
       author: "",
       genre: "",
-      rating: 1,
-      totalCopies: 2,
+      rating: 0,
+      totalCopies: 0,
       coverUrl: "",
       coverColor: "",
       videoUrl: "",
@@ -50,8 +52,23 @@ const BookForm = ({
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    
+    const result = await createBook(values);
+
+    if(result.success) {
+      toast({
+        title: "success",
+        description: "Book created successfully",
+      })
+
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast({
+        title: "Error",
+        description: result.message,
+        variant: "destructive",
+    })
   }
+}
 
   return (
       <Form {...form}>
@@ -307,4 +324,4 @@ const BookForm = ({
     );
 };
 
-export default BookForm;
+export default BookForm
