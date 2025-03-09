@@ -8,6 +8,13 @@
       "when": 1740145624099,
       "tag": "0000_eager_purple_man",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741440373369,
+      "tag": "0001_stiff_typhoid_mary",
+      "breakpoints": true
     }
   ]
 }
