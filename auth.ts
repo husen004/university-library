@@ -43,10 +43,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/sign-in",
   },
-  callback: {
-    async jwt({ token, user }) {},
-    async session({ session, token }) {},
-  }
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.name = token.name as string;
+      }
+
+      return session;
+    },
+  },
 });
 
 function CredentialProvider(arg0: {}): import("@auth/core/providers").Provider {
