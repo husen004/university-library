@@ -16,11 +16,11 @@ const Home = async () => {
 
   return (
     <>
-      <BookOverview {...latestBook[0]} />
+      <BookOverview {...latestBook[0]} userId={session?.user?.id as string}  />
 
       <BookList
         title="latest Books"
-        books={latestBook}
+        books={latestBook.slice(1)}
         containerClassName="mt-28"
       />
     </>
