@@ -3,6 +3,7 @@
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { eq } from "drizzle-orm";
+import dayjs from "dayjs";
 
 export const borrowBook = async (params: BorrowBookParams) => {
   const { userId, bookId } = params;
@@ -14,14 +15,16 @@ export const borrowBook = async (params: BorrowBookParams) => {
       .where(eq(books.id, bookId))
       .limit(1);
 
-      if(!book.length || book[0].availableCopies <= 0){
-        return {
-            success: false,
-            error: "No book to Borrow"
-        }
-      }
+    if (!book.length || book[0].availableCopies <= 0) {
+      return {
+        success: false,
+        error: "No book to Borrow",
+      };
+    }
 
-      const dueData = new Date()
+    const dueData = dayjs().add(7, "day").toDate().toDateString(); 
+
+    // const record = db.insert 
   } catch (error) {
     console.log(error);
 
